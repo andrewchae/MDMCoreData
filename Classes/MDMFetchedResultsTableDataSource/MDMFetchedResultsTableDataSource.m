@@ -204,11 +204,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                           withRowAnimation:UITableViewRowAnimationAutomatic];
             
             break;
-            
-        default:
-            ALog(@"Missing NSFechedResultsChange case");
-            
-            break;
     }
 }
 
@@ -253,10 +248,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                                       withRowAnimation:UITableViewRowAnimationAutomatic];
             }
             
-            break;
-        default:
-            ALog(@"Missing NSFechedResultsChange case");
-
             break;
     }
 }
