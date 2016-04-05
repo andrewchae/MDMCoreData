@@ -228,12 +228,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             break;
 
         case NSFetchedResultsChangeMove:
-            // It's currently not possible to perform a move and reload inside the same tableview update block (http://www.hitmaroc.net/1166896-9192-how-reload-programmatically-moved-row.html).
-            // The workaround is to delete then insert the row.
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath]
-                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+            if (indexPath.section == newIndexPath.section && indexPath.row == newIndexPath.row) {
+                if ([self.tableView.indexPathsForVisibleRows containsObject:indexPath]) {
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
+            } else {
+                // It's currently not possible to perform a move and reload inside the same tableview update block (http://www.hitmaroc.net/1166896-9192-how-reload-programmatically-moved-row.html).
+                // The workaround is to delete then insert the row.
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                                      withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView insertRowsAtIndexPaths:@[newIndexPath]
+                                      withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
 
             break;
     }
