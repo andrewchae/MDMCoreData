@@ -222,7 +222,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         case NSFetchedResultsChangeUpdate:
             if ([self.tableView.indexPathsForVisibleRows containsObject:indexPath]) {
                 
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }
            
             break;
@@ -230,7 +230,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         case NSFetchedResultsChangeMove:
             if (indexPath.section == newIndexPath.section && indexPath.row == newIndexPath.row) {
                 if ([self.tableView.indexPathsForVisibleRows containsObject:indexPath]) {
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                 }
             } else {
                 // It's currently not possible to perform a move and reload inside the same tableview update block (http://www.hitmaroc.net/1166896-9192-how-reload-programmatically-moved-row.html).
