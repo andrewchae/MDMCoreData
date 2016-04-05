@@ -55,7 +55,7 @@
 
     fetchedResultsController.delegate = self;
     BOOL fetchSuccess = [fetchedResultsController performFetch:NULL];
-    ZAssert(fetchSuccess, @"Fetch request does not include sort descriptor that uses the section name.");
+//    ZAssert(fetchSuccess, @"Fetch request does not include sort descriptor that uses the section name.");
     [self.collectionView reloadData];
 }
 
