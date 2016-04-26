@@ -10,9 +10,10 @@ Pod::Spec.new do |s|
   s.author           = { 'Matthew Morey'  => 'me@matthewmorey.com',
                          'Terry Lewis II' => 'terry@ploverproductions.com',
                          'Matt Glover' => '@mattglover' }
-  s.source           = { :git => 'https://github.com/mmorey/MDMCoreData.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/andrewchae/MDMCoreData.git', :branch => 'ac' }
   s.social_media_url = 'https://twitter.com/xzolian'
   s.requires_arc = true
+  s.public_header_files = 'Classes/*.h'
   s.source_files = 'Classes/*.{h,m}'
   s.frameworks = 'CoreData'
   s.ios.deployment_target = '6.0'
@@ -20,11 +21,13 @@ Pod::Spec.new do |s|
 
   s.subspec 'MDMCoreDataCore' do |ss|
     ss.source_files = 'Classes/MDMCoreDataCore/*.{h,m}'
+    ss.public_header_files = 'Classes/MDMCoreDataCore/*.h'
     ss.requires_arc = true
   end
 
   s.subspec 'MDMPersistenceController' do |ss|
     ss.source_files = 'Classes/MDMPersistenceController/MDMPersistenceController.{h,m}'
+    ss.public_header_files = 'Classes/MDMPersistenceController/MDMPersistenceController.h'
     ss.dependency 'MDMCoreData/MDMCoreDataCore'
     ss.requires_arc = true
   end
@@ -32,6 +35,7 @@ Pod::Spec.new do |s|
   s.subspec 'MDMFetchedResultsTableDataSource' do |ss|
     ss.ios.deployment_target = '6.0'
     ss.ios.source_files = 'Classes/MDMFetchedResultsTableDataSource/MDMFetchedResultsTableDataSource.{h,m}'
+    ss.ios.public_header_files = 'Classes/MDMPersistenceController/MDMFetchedResultsTableDataSource.h'
     ss.osx.source_files = ''
     ss.dependency 'MDMCoreData/MDMCoreDataCore'
     ss.requires_arc = true
@@ -40,6 +44,7 @@ Pod::Spec.new do |s|
   s.subspec 'MDMFetchedResultsCollectionDataSource' do |ss|
     ss.ios.deployment_target = '6.0'
     ss.ios.source_files = 'Classes/MDMFetchedResultsCollectionDataSource/MDMFetchedResultsCollectionDataSource.{h,m}'
+    ss.ios.public_header_files = 'Classes/MDMFetchedResultsCollectionDataSource/MDMFetchedResultsCollectionDataSource.h'
     ss.osx.source_files = ''
     ss.dependency 'MDMCoreData/MDMCoreDataCore'
     ss.requires_arc = true
@@ -47,6 +52,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'NSManagedObject+MDMCoreDataAdditions' do |ss|
     ss.source_files = 'Classes/NSManagedObject+MDMCoreDataAdditions/NSManagedObject+MDMCoreDataAdditions.{h,m}'
+    ss.public_header_files = 'Classes/NSManagedObject+MDMCoreDataAdditions/NSManagedObject+MDMCoreDataAdditions.h'
     ss.dependency 'MDMCoreData/MDMCoreDataCore'
     ss.requires_arc = true
   end
